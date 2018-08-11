@@ -1,0 +1,73 @@
+#%RAML 1.0
+baseUri: https://mocksvc.mulesoft.com/mocks/fbcbd793-4246-4153-b7e6-ddbfc4ace008 # 
+title: Book Service API
+
+/book:
+ get:
+  responses: 
+    200:
+      body: 
+        application/json:
+          example: |
+           [{"BookTitle":"DataScience","Author":"JAmes","YOP":2005,"Cost":200},
+           {"BookTitle":"HowToPrepare","Author":"Collen","YOP":1999,"Cost":300}]
+                         
+ post:
+  body: 
+    application/json:
+      example: |
+       {"BookTitle":"DataScience","Author":"JAmes","YOP":2005,"Cost":200}
+  responses:
+    200:
+      body: 
+        application/json:
+          example: |
+           {"Message":"Book Added Successfully(Not Really)"}
+
+ /{bookTitle}:
+  get:
+   queryParameters:
+    Year:
+     displayName: YOP
+     description: Year Of Publication
+     example: "2010"
+     required: true
+     type: string
+
+   responses: 
+     200:
+       body: 
+         application/json:
+           example: |
+            {"BookTitle":"HowToPrepare","Author":"Collen","YOP":1999,"Cost":300}
+
+/author:
+ get:
+   responses: 
+     200:
+       body: 
+         application/json:
+           example: |
+            [{"author":"John","number of books":"2"}]
+
+ post:
+   body: 
+     application/json:
+       example: |
+        {"author":"John","number of books":"2"}
+   responses:
+     200:
+       body: 
+         application/json:
+           example: |
+            {"Message":"Book Added Successfully(Not Really)"}
+     
+
+      
+      
+  
+            
+
+
+
+   
